@@ -2,6 +2,8 @@
 
 Los diagramas están escritos en Mermaid para que se vean directamente en GitHub y puedan editarse sin instalar programas de dibujo.
 
+También hay [imágenes SVG generadas con los scripts de Python](GALERIA.md) listas para ver y descargar.
+
 ## 1. Visión general: cómo se conectan las partes
 
 ```mermaid

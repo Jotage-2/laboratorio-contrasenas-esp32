@@ -8,6 +8,9 @@ Proyecto universitario de ciberseguridad con dos demostraciones conectadas: un *
 
 - [Informe breve: objetivo, método, alcance y entregables](INFORME.md)
 - [Ocho diagramas explicados](DIAGRAMAS.md)
+- [Galería: diagramas e imágenes creadas por Python](GALERIA.md)
+- [Procesos y formato de los datos, paso a paso](PROCESOS.md)
+- [Librerías, instalación y comandos](INSTALACION.md)
 
 ## Idea central
 
@@ -31,3 +34,14 @@ Proyecto universitario de ciberseguridad con dos demostraciones conectadas: un *
 La exposición comienza con dos contraseñas de ejemplo, una aleatoria y otra con patrón humano. El equipo enseña qué estrategia prueba primero cada una y cuánto tardó **en el entorno medido**. Luego muestra una cerradura ESP32 en modo inicial y repite la misma secuencia de intentos con las defensas activadas. El dashboard reúne los resultados y los eventos del dispositivo.
 
 Todas las cuentas, contraseñas, hashes y dispositivos usados en las pruebas pertenecerán al laboratorio del proyecto.
+
+## Prototipo Python incluido
+
+Los scripts de `scripts/` permiten ejecutar ya una demostración reproducible: crean cinco casos ficticios, comparan cuatro estrategias con un máximo de candidatos, simulan el control de acceso del ESP32 y generan imágenes de diagramas y gráficas. Las gráficas incluidas en la galería son **resultados de esa demostración sintética**. No son resultados de una RTX 4060 ni de un ESP32 físico.
+
+```powershell
+python -m pip install -r requirements.txt
+python scripts/ejecutar_demo.py
+```
+
+Para los SVG/PNG de Graphviz también hace falta instalar el programa `dot`; consulta [INSTALACION.md](INSTALACION.md).
