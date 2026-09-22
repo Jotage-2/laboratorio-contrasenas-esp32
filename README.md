@@ -11,6 +11,7 @@ Proyecto universitario de ciberseguridad con dos demostraciones conectadas: un *
 - [Galería: diagramas e imágenes creadas por Python](GALERIA.md)
 - [Procesos y formato de los datos, paso a paso](PROCESOS.md)
 - [Librerías, instalación y comandos](INSTALACION.md)
+- [Guía breve para explicarlo al equipo](GUIA_PARA_EQUIPO.md)
 
 ## Idea central
 

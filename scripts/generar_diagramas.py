@@ -1,4 +1,4 @@
-"""Genera cinco diagramas detallados como DOT y, con Graphviz, SVG/PNG.
+"""Genera seis diagramas detallados como DOT y, con Graphviz, SVG/PNG.
 
 Los diagramas son de DISEÑO. No representan servicios ya desplegados ni un
 ESP32 físico ya programado.
@@ -111,12 +111,33 @@ def despliegue() -> graphviz.Digraph:
     return d
 
 
+def dos_escenarios() -> graphviz.Digraph:
+    d = nuevo("06 · Ataque offline y acceso online: defensas distintas", "LR")
+    with d.subgraph(name="cluster_hashes") as s:
+        s.attr(label="Prueba offline sobre hashes propios", color="#93c5fd", style="rounded")
+        s.node("h", "Hash sintético de prueba", fillcolor="#dbeafe")
+        s.node("c", "Generar y verificar\ncandidatos locales", fillcolor="#dbeafe")
+        s.node("a", "Defensa del almacenamiento:\nArgon2id + salt + costo adecuado", fillcolor="#bfdbfe")
+        s.edge("h", "c", label="no consulta al ESP32")
+        s.edge("a", "c", style="dashed", label="eleva costo por candidato")
+    with d.subgraph(name="cluster_acceso") as s:
+        s.attr(label="Prueba online contra el ESP32 propio", color="#86efac", style="rounded")
+        s.node("i", "Intento por interfaz", fillcolor="#dcfce7")
+        s.node("p", "Control de acceso ESP32", fillcolor="#dcfce7")
+        s.node("r", "Respuesta y evento", fillcolor="#dcfce7")
+        s.node("l", "Defensa de la interfaz:\nespera + bloqueo + registro", fillcolor="#bbf7d0")
+        s.edges([("i", "p"), ("p", "r")])
+        s.edge("l", "p", style="dashed", label="limita intentos aceptados")
+    return d
+
+
 DIAGRAMAS = {
     "01_arquitectura": arquitectura,
     "02_proceso_offline": proceso_offline,
     "03_patron_humano": patron_humano,
     "04_estados_esp32": estados_esp32,
     "05_despliegue": despliegue,
+    "06_dos_escenarios": dos_escenarios,
 }
 
 

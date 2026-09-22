@@ -70,7 +70,7 @@ El simulador del ESP32 **no se conecta a un dispositivo real**: modela sus estad
 | `comparar_estrategias.py` | Dataset | `generated/resultados_estrategias.csv` |
 | `simular_esp32.py` | Secuencia ficticia de PINes | `generated/eventos_esp32.csv` |
 | `crear_graficas.py` | Ambos CSV de resultados | Gráficas SVG y PNG |
-| `generar_diagramas.py` | Arquitectura definida en Python | Cinco diagramas `.dot`, SVG y PNG |
+| `generar_diagramas.py` | Arquitectura definida en Python | Seis diagramas `.dot`, SVG y PNG |
 | `ejecutar_demo.py` | Ninguna | Ejecuta las cinco etapas anteriores |
 
 ## Fuentes de instalación

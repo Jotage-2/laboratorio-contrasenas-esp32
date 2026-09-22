@@ -49,13 +49,14 @@ El script lee los CSV producidos por las etapas anteriores. Si faltan, se detien
 
 ## 5. Diagramas de diseño generados con Graphviz
 
-`scripts/generar_diagramas.py` crea cinco archivos `.dot` y, si `dot` está instalado, las versiones SVG y PNG:
+`scripts/generar_diagramas.py` crea seis archivos `.dot` y, si `dot` está instalado, las versiones SVG y PNG:
 
 1. Arquitectura general de laboratorio, ESP32, métricas y dashboard.
 2. Pasos del experimento offline.
 3. Dos rutas de búsqueda para una contraseña con patrón humano.
 4. Estados previstos para el modo protegido del ESP32.
 5. Ubicación de equipos y conexión VPN/SSH opcional.
+6. Separación entre las defensas de una prueba offline y una interfaz online.
 
 Los diagramas muestran **la arquitectura propuesta**. El bloque VPN/SSH no es un servicio instalado por estos scripts; el bloque Argon2id señala una ampliación aún pendiente.
 

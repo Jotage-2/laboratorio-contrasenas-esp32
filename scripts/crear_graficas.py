@@ -82,19 +82,27 @@ def grafica_esp32(eventos: list[dict], carpeta: Path) -> None:
         "bloqueo_activado": 1, "bloqueado": 1, "acceso_concedido": 2,
     }
     colores = {"inicial": "#2563eb", "protegido": "#dc2626"}
-    figura, eje = plt.subplots(figsize=(9, 5))
+    figura, eje = plt.subplots(figsize=(10, 5))
     for modo in ("inicial", "protegido"):
         filas = [fila for fila in eventos if fila["modo"] == modo]
-        eje.plot(
-            [int(fila["segundo_virtual"]) for fila in filas],
+        desplazamiento = -0.09 if modo == "inicial" else 0.09
+        eje.scatter(
+            [numero + desplazamiento for numero in range(1, len(filas) + 1)],
             [mapa[fila["resultado"]] for fila in filas],
-            marker="o", label=modo, color=colores[modo], linewidth=2,
+            label=modo, color=colores[modo], s=140, zorder=3,
         )
+    referencia = [fila for fila in eventos if fila["modo"] == "inicial"]
+    eje.set_xticks(
+        range(1, len(referencia) + 1),
+        [f"Intento {numero}\n{fila['segundo_virtual']} s" for numero, fila in enumerate(referencia, 1)],
+    )
     eje.set_yticks([0, 1, 2], ["PIN incorrecto", "Espera o bloqueo", "Acceso concedido"])
-    eje.set_xlabel("Segundo virtual (simulación, sin espera real)")
-    eje.set_title("Misma secuencia de PINes en dos modos del ESP32 simulado")
+    eje.set_xlim(0.5, len(referencia) + 0.5)
+    eje.set_ylim(-0.3, 2.3)
+    eje.set_xlabel("Orden de los intentos y segundo virtual (sin espera real)")
+    eje.set_title("Resultado de cada intento en los dos modos del ESP32 simulado")
     eje.legend()
-    eje.grid(alpha=0.2)
+    eje.grid(axis="y", alpha=0.2)
     figura.tight_layout()
     guardar(figura, carpeta / "secuencia_esp32_simulada")
 

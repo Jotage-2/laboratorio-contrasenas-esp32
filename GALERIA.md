@@ -22,6 +22,10 @@ Estas imágenes se generaron ejecutando los scripts Python incluidos en el repos
 
 ![Distribución de equipos](assets/diagramas/05_despliegue.svg)
 
+## Dos escenarios y sus defensas
+
+![Defensas para prueba offline y acceso online](assets/diagramas/06_dos_escenarios.svg)
+
 ## Recuperaciones en la demostración sintética
 
 ![Recuperación por estrategia](assets/graficas/recuperacion_por_estrategia.svg)
